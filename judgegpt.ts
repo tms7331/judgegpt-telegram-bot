@@ -15,17 +15,26 @@ if (chatgptKey == undefined) {
 const bot = new Bot(botKey);
 const openai = new OpenAI({apiKey: chatgptKey});
 
-
 // Command listener for "/new"
-bot.command('new', (ctx: any) => {
+bot.command('new', async (ctx: any) => {
   // Extract the command and arguments
   const text = ctx.message?.text || '';
   const args = text.split(' ').slice(1); // Get all words after the command
 
   if (args.length > 0) {
-    // If there are arguments, echo them back
-    const echoText = args.join(' ');
-    ctx.reply(`You said: ${echoText}`);
+    try {
+      const response = await openai.chat.completions.create({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          { role: 'system', content: 'you are an assistance who responds like Dr Seuss' },
+          { role: 'user', content: args.join(' ') }
+        ],
+        max_tokens: 50
+      });
+      ctx.reply(response.choices[0]?.message?.content);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   } else {
     ctx.reply('Please provide a text after the /new command.');
   }

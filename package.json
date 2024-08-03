@@ -1,0 +1,15 @@
+{
+  "name": "judgegpt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "judgegpt.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "grammy": "^1.28.0",
+    "openai": "^4.54.0"
+  }
+}

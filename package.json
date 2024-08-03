@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "grammy": "^1.28.0",
-    "openai": "^4.54.0"
+    "openai": "^4.54.0",
+    "typescript": "^5.5.4"
   }
 }

@@ -49,21 +49,6 @@ async function resolveDispute(descA: string, descB: string) {
 }
 
 
-bot.on('message:new_chat_members', async (ctx) => {
-  // Get the new members who joined the chat
-  const newMembers = ctx.message.new_chat_members;
-
-  // Iterate through each new member and send a welcome message
-  for (const member of newMembers) {
-    // Check if the new member is not the bot itself
-    if (!member.is_bot) {
-      const firstName = member.first_name || 'User';
-      await ctx.reply(`Welcome, ${firstName}!`);
-    }
-  }
-});
-
-
 function buildNewArgumentKey(userA: string, userB: string) {
   // Sorts two users and concatenates them and returns the value
   const users = [userA, userB].sort();
